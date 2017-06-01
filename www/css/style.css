@@ -127,6 +127,9 @@ body{
     font-size: 30px;
     color:#888;
 }
+.cell i.on{
+	color:#FFD10F;
+}
 .cell .poster {
     display: inline-block;
     float: left;

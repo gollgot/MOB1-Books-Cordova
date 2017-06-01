@@ -32,13 +32,13 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
         
+        // Create or get the library DB
         db = window.sqlitePlugin.openDatabase({name: 'library.db', location: 'default'});
-
+        // We init (create or get) the table
         initTable(db);
         //populate(db);
         createBookList(db);
-        //show(db);
-        //populate(db);*/
+        //show(db);/*
 
     },
 
@@ -57,6 +57,16 @@ var app = {
 
 app.initialize();
 
+
+
+
+/********************
+**     DB PART     **
+********************/
+
+/**
+* Create the books table if it doesn't already exists
+*/
 function initTable(db){
     db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS books (title, author, poster, favorite, saw, rate)');
@@ -67,6 +77,10 @@ function initTable(db){
     });
 }
 
+
+/**
+* populate the DB with fake datas
+*/
 function populate(db){
     db.transaction(function(tx) {
         tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?)',[
@@ -75,6 +89,14 @@ function populate(db){
             'harry_potter_1.jpg',
             1,
             0,
+            7
+        ]);
+        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?)',[
+            'le seigneur des anneaux l\'intégrale',
+            'J.R.R. Tolkien',
+            'seigneur_des_anneaux.jpg',
+            0,
+            1,
             9
         ]);
     }, function(error) {
@@ -84,6 +106,10 @@ function populate(db){
     });
 }
 
+
+/**
+* Show some infos we want from the DB (for debug)
+*/
 function show(db){
     db.transaction(function(tx) {
         tx.executeSql('SELECT count(title) as count  FROM books', [], function(tx, rs) {
@@ -94,12 +120,20 @@ function show(db){
     });
 }
 
+
+
+/**
+* Create the #book-list which include a book pear cell. 
+*/
 function createBookList(db){
     
-    getNbBooks();
-    
-    // Get ne nb of books we have on the DB
-    function getNbBooks(){
+    create();
+
+    /**
+    * Get ne nb of books we have on the DB and call
+    * the function which will create the #book-list
+    */
+    function create(){
         db.transaction(function(tx) {
             tx.executeSql('SELECT count(title) as count  FROM books', [], function(tx, rs) {
                 createList(rs.rows.item(0).count);
@@ -109,12 +143,18 @@ function createBookList(db){
         });
     }
     
-    // Create the list
+    /**
+    * Create the #book-list which include a book pear cell. 
+    * We travel all elements on db and create the HTML.
+    */
     function createList(nbElements){
         db.transaction(function(tx) {
             tx.executeSql('SELECT * FROM books', [], function(tx, rs) {
 
                 var list = $("#book-list");
+                var cell = '';
+
+                // travel all the elements on the DB and create the HTML for the current cell
                 for (var i = 0; i < nbElements; i++) {
                     var title = rs.rows.item(i).title;
                     var author = rs.rows.item(i).author;
@@ -123,9 +163,16 @@ function createBookList(db){
                     var saw = rs.rows.item(i).saw;
                     var rate = rs.rows.item(i).rate;
                     
-                    var cell = `
-                        <div class="cell">
-                            <i class="favorite fa fa-star" aria-hidden="true"></i>
+                    // concat each cell, to have one big html code with all cell
+                    cell += '<div class="cell">';
+
+                    if(favorite == 0){
+                        cell += '<i class="favorite fa fa-star" aria-hidden="true"></i>';
+                    }else{
+                        cell += '<i class="favorite on fa fa-star" aria-hidden="true"></i>';
+                    }
+
+                    cell += `
                             <div class="poster">
                                 <img src="img/`+poster+`">
                             </div>
@@ -143,17 +190,19 @@ function createBookList(db){
                             </div>
                         </div>
                     `;
-                     list.html(cell);
+                    
                 }
+
+                // add all cell to the list
+                list.html(cell);
+                // Add the list to the current panel (the current application view)
                 $(".panel").append(list);
-                
 
                 
             }, function(tx, error) {
                 alert('SELECT error: ' + error.message);
             });
         });
-        
         
         
     }
