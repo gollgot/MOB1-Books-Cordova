@@ -160,48 +160,52 @@ function createBookList(db){
                 var list = $("#book-list");
                 var cell = '';
 
-                // travel all the elements on the DB and create the HTML for the current cell
-                for (var i = 0; i < nbElements; i++) {
-                    var title = rs.rows.item(i).title;
-                    var author = rs.rows.item(i).author;
-                    var cover = rs.rows.item(i).cover;
-                    var favorite = rs.rows.item(i).favorite;
-                    var read = rs.rows.item(i).read;
-                    var rate = rs.rows.item(i).rate;
-                    
-                    // concat each cell, to have one big html code with all cell
-                    cell += '<div class="cell">';
+                if(nbElements == 0){
+                    cell += '<p>Aucun livre</p>';
+                }else{
+                    // travel all the elements on the DB and create the HTML for the current cell
+                    for (var i = 0; i < nbElements; i++) {
+                        var title = rs.rows.item(i).title;
+                        var author = rs.rows.item(i).author;
+                        var cover = rs.rows.item(i).cover;
+                        var favorite = rs.rows.item(i).favorite;
+                        var read = rs.rows.item(i).read;
+                        var rate = rs.rows.item(i).rate;
+                        
+                        // concat each cell, to have one big html code with all cell
+                        cell += '<div class="cell">';
 
-                    if(favorite == 0){
-                        cell += '<i class="favorite fa fa-star" aria-hidden="true"></i>';
-                    }else{
-                        cell += '<i class="favorite on fa fa-star" aria-hidden="true"></i>';
-                    }
+                        if(favorite == 0){
+                            cell += '<i class="favorite fa fa-star" aria-hidden="true"></i>';
+                        }else{
+                            cell += '<i class="favorite on fa fa-star" aria-hidden="true"></i>';
+                        }
 
-                    cell += `
-                            <div class="poster">
-                                <img src="img/`+cover+`">
-                            </div>
-                            <div class="infos">
-                                <div class="title">`+title+`</div>
-                                <div class="author">`+author+`</div>
-                                <div class="other">
-                                    <div class="saw">`;
-                    if(read == 0){
-                        cell += '<i class="fa fa-eye" aria-hidden="true"></i>';
-                    }else{
-                        cell += '<i class="on fa fa-eye" aria-hidden="true"></i>';
-                    }
-                    cell += `
+                        cell += `
+                                <div class="poster">
+                                    <img src="img/`+cover+`">
                                 </div>
-                                <div class="rate">
-                                    <span class="nb1">`+rate+`</span> / <span class="nb2">10</span>
+                                <div class="infos">
+                                    <div class="title">`+title+`</div>
+                                    <div class="author">`+author+`</div>
+                                    <div class="other">
+                                        <div class="saw">`;
+                        if(read == 0){
+                            cell += '<i class="fa fa-eye" aria-hidden="true"></i>';
+                        }else{
+                            cell += '<i class="on fa fa-eye" aria-hidden="true"></i>';
+                        }
+                        cell += `
+                                    </div>
+                                    <div class="rate">
+                                        <span class="nb1">`+rate+`</span> / <span class="nb2">10</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    `;
-                    
+                        `;
+                        
+                    }
                 }
 
                 // add all cell to the list
