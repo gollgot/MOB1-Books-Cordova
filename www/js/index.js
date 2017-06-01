@@ -165,6 +165,7 @@ function createBookList(db){
                 }else{
                     // travel all the elements on the DB and create the HTML for the current cell
                     for (var i = 0; i < nbElements; i++) {
+                        var id = rs.rows.item(i).id;
                         var title = rs.rows.item(i).title;
                         var author = rs.rows.item(i).author;
                         var cover = rs.rows.item(i).cover;
@@ -173,7 +174,7 @@ function createBookList(db){
                         var rate = rs.rows.item(i).rate;
                         
                         // concat each cell, to have one big html code with all cell
-                        cell += '<div class="cell">';
+                        cell += '<div class="cell" data-id="'+id+'">';
 
                         if(favorite == 0){
                             cell += '<i class="favorite fa fa-star" aria-hidden="true"></i>';
@@ -214,7 +215,8 @@ function createBookList(db){
                 $(".panel").append(list);
 
                 $(".cell").click(function(){
-                    alert("dwdw");
+                    var bookId = $(this).data("id");
+                    alert(bookId);
                 });
                 
             }, function(tx, error) {
