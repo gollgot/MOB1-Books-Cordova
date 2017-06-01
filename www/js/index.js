@@ -38,7 +38,7 @@ var app = {
         initTable(db);
         //populate(db);
         createBookList(db);
-        //show(db);/*
+        //show(db);
 
     },
 
@@ -69,11 +69,11 @@ app.initialize();
 */
 function initTable(db){
     db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS books (title, author, poster, favorite, saw, rate)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS books (title, author, cover, favorite, read, rate, isbn, comment)');
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
     }, function() {
-        alert('Initialisation table Books OK');
+        //alert('Initialisation table Books OK');
     });
 }
 
@@ -83,21 +83,25 @@ function initTable(db){
 */
 function populate(db){
     db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?)',[
+        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?, ?, ?)',[
             'Harry Potter à l\'école des sorciers',
             'J.K Rowling',
             'harry_potter_1.jpg',
             1,
             0,
-            7
+            7,
+            123456,
+            ''
         ]);
-        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?)',[
+        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?, ?, ?)',[
             'le seigneur des anneaux l\'intégrale',
             'J.R.R. Tolkien',
             'seigneur_des_anneaux.jpg',
             0,
             1,
-            9
+            9,
+            123456,
+            ''
         ]);
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
@@ -112,8 +116,8 @@ function populate(db){
 */
 function show(db){
     db.transaction(function(tx) {
-        tx.executeSql('SELECT count(title) as count  FROM books', [], function(tx, rs) {
-            alert('name: ' + rs.rows.item(0).count);
+        tx.executeSql('SELECT * FROM books', [], function(tx, rs) {
+            alert('name: ' + rs.rows.item(0).isbn);
         }, function(tx, error) {
             alert('SELECT error: ' + error.message);
         });
@@ -158,9 +162,9 @@ function createBookList(db){
                 for (var i = 0; i < nbElements; i++) {
                     var title = rs.rows.item(i).title;
                     var author = rs.rows.item(i).author;
-                    var poster = rs.rows.item(i).poster;
+                    var poster = rs.rows.item(i).cover;
                     var favorite = rs.rows.item(i).favorite;
-                    var saw = rs.rows.item(i).saw;
+                    var saw = rs.rows.item(i).read;
                     var rate = rs.rows.item(i).rate;
                     
                     // concat each cell, to have one big html code with all cell
