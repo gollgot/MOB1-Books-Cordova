@@ -36,7 +36,7 @@ var app = {
         db = window.sqlitePlugin.openDatabase({name: 'library.db', location: 'default'});
         // We init (create or get) the table
         initTable(db);
-        //populate(db);
+        populate(db); /* ONLY FOR DEVELOPMENT */
         createBookList(db);
         //show(db);
 
@@ -69,7 +69,7 @@ app.initialize();
 */
 function initTable(db){
     db.transaction(function(tx) {
-        //tx.executeSql('DROP TABLE books');
+        tx.executeSql('DROP TABLE books'); /* ONLY FOR DEVELOPMENT */
         tx.executeSql('CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT, title, author, cover, favorite, read, rate, isbn, comment)');
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
