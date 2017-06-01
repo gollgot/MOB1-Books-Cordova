@@ -1,0 +1,23 @@
+{
+    "name": "io.cordova.hellocordova",
+    "version": "1.0.0",
+    "displayName": "HelloCordova",
+    "cordova": {
+        "platforms": [
+            "android",
+            "browser"
+        ],
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-browsersync": {},
+            "cordova-sqlite-storage": {}
+        }
+    },
+    "dependencies": {
+        "cordova-android": "~6.2.3",
+        "cordova-browser": "~4.1.0",
+        "cordova-plugin-browsersync": "^0.1.6",
+        "cordova-plugin-whitelist": "1",
+        "cordova-sqlite-storage": "^2.0.4"
+    }
+}
