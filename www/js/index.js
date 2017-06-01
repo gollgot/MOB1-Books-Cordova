@@ -39,7 +39,6 @@ var app = {
         populate(db); /* ONLY FOR DEVELOPMENT */
         createBookList(db);
         //show(db);
-
     },
 
     // Update DOM on a Received Event
@@ -109,7 +108,7 @@ function populate(db){
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
     }, function() {
-        alert('Populated database OK');
+        //alert('Populated database OK');
     });
 }
 
@@ -165,9 +164,9 @@ function createBookList(db){
                 for (var i = 0; i < nbElements; i++) {
                     var title = rs.rows.item(i).title;
                     var author = rs.rows.item(i).author;
-                    var poster = rs.rows.item(i).cover;
+                    var cover = rs.rows.item(i).cover;
                     var favorite = rs.rows.item(i).favorite;
-                    var saw = rs.rows.item(i).read;
+                    var read = rs.rows.item(i).read;
                     var rate = rs.rows.item(i).rate;
                     
                     // concat each cell, to have one big html code with all cell
@@ -181,21 +180,26 @@ function createBookList(db){
 
                     cell += `
                             <div class="poster">
-                                <img src="img/`+poster+`">
+                                <img src="img/`+cover+`">
                             </div>
                             <div class="infos">
                                 <div class="title">`+title+`</div>
                                 <div class="author">`+author+`</div>
                                 <div class="other">
-                                    <div class="saw">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="rate">
-                                        <span class="nb1">`+rate+`</span> / <span class="nb2">10</span>
-                                    </div>
+                                    <div class="saw">`;
+                    if(read == 0){
+                        cell += '<i class="fa fa-eye" aria-hidden="true"></i>';
+                    }else{
+                        cell += '<i class="on fa fa-eye" aria-hidden="true"></i>';
+                    }
+                    cell += `
+                                </div>
+                                <div class="rate">
+                                    <span class="nb1">`+rate+`</span> / <span class="nb2">10</span>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     `;
                     
                 }

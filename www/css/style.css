@@ -155,12 +155,18 @@ body{
 }
 .cell .infos .other .saw{
 	margin-top: 15px;
-	width: 70px;
     text-align: center;
-    border-radius: 4px;
-    background-color: #45BF55;
-    /*background-color: #D40D12;*/
     display: inline-block;
+}
+.cell .infos .other .saw i{
+	border-radius: 4px;
+    background-color: #D40D12;
+	width: 70px;
+}
+.cell .infos .other .saw i.on{
+	border-radius: 4px;
+	background-color: #45BF55;
+	width: 70px;
 }
 .cell .infos .other i{
 	font-size: 28px;
