@@ -69,7 +69,8 @@ app.initialize();
 */
 function initTable(db){
     db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS books (title, author, cover, favorite, read, rate, isbn, comment)');
+        //tx.executeSql('DROP TABLE books');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT, title, author, cover, favorite, read, rate, isbn, comment)');
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
     }, function() {
@@ -83,7 +84,8 @@ function initTable(db){
 */
 function populate(db){
     db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?, ?, ?)',[
+        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?,?,?,?)',[
+            null,
             'Harry Potter à l\'école des sorciers',
             'J.K Rowling',
             'harry_potter_1.jpg',
@@ -93,7 +95,8 @@ function populate(db){
             123456,
             ''
         ]);
-        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?, ?, ?)',[
+        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?,?,?,?)',[
+            null,
             'le seigneur des anneaux l\'intégrale',
             'J.R.R. Tolkien',
             'seigneur_des_anneaux.jpg',
@@ -117,7 +120,7 @@ function populate(db){
 function show(db){
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM books', [], function(tx, rs) {
-            alert('name: ' + rs.rows.item(0).isbn);
+            alert('name: ' + rs.rows.item(1).id);
         }, function(tx, error) {
             alert('SELECT error: ' + error.message);
         });
@@ -202,6 +205,9 @@ function createBookList(db){
                 // Add the list to the current panel (the current application view)
                 $(".panel").append(list);
 
+                $(".cell").click(function(){
+                    alert("dwdw");
+                });
                 
             }, function(tx, error) {
                 alert('SELECT error: ' + error.message);
