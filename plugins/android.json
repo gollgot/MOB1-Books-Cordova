@@ -7,15 +7,22 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
         "cordova-plugin-browsersync": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "ch.cpnv.reading_time"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "ch.cpnv.reading_time"
         },
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "ch.cpnv.reading_time"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "ch.cpnv.reading_time"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "ch.cpnv.reading_time"
+        }
+    }
 }

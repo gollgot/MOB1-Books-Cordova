@@ -10,14 +10,19 @@
         "plugins": {
             "cordova-plugin-whitelist": {},
             "cordova-plugin-browsersync": {},
-            "cordova-sqlite-storage": {}
+            "cordova-sqlite-storage": {},
+            "phonegap-plugin-barcodescanner": {
+                "CAMERA_USAGE_DESCRIPTION": "To scan barcodes"
+            }
         }
     },
     "dependencies": {
-        "cordova-android": "~6.2.3",
+        "cordova-android": "^6.2.3",
         "cordova-browser": "^4.1.0",
         "cordova-plugin-browsersync": "^0.1.6",
+        "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-whitelist": "1",
-        "cordova-sqlite-storage": "^2.0.4"
+        "cordova-sqlite-storage": "^2.0.4",
+        "phonegap-plugin-barcodescanner": "^6.0.6"
     }
 }

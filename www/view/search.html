@@ -3,8 +3,10 @@
 	<p>veuillez entrer un numéro ISBN, ou scanner le code bar de votre livre</p>
 
 	<form ng-submit="search()">
-		<input type="number" min="0" placeholder="Numéro ISBN" ng-model="isbn">
+		<input id="isbn" type="number" min="0" placeholder="Numéro ISBN" ng-model="isbnInput">
 		<input type="submit" value="Rechercher">
 	</form>
+
+	<input type="button" value="Scanner" ng-click="scan()">
 
 </section>
