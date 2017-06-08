@@ -13,3 +13,4 @@ app.config(function($routeProvider){
 		.when('/search', {templateUrl: 'view/search.html'})
 		.otherwise({redirectTo: '/library'});
 });
+
