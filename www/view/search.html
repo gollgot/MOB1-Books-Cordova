@@ -1,3 +1,10 @@
-<section class="panel">
-	Recherche d'un livre
+<section ng-controller="searchController" class="panel">
+
+	<p>veuillez entrer un numéro ISBN, ou scanner le code bar de votre livre</p>
+
+	<form ng-submit="search()">
+		<input type="number" min="0" placeholder="Numéro ISBN" ng-model="isbn">
+		<input type="submit" value="Rechercher">
+	</form>
+
 </section>
