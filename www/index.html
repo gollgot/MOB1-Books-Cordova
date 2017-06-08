@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="msapplication-tap-highlight" content="no">
@@ -8,104 +8,28 @@
         <link rel="stylesheet" type="text/css" href="css/vendor/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
-        <title>Hello World</title>
+        <title>Reading Time</title>
     </head>
     <body>
         
         <header class="header">
-            Ma bibliothèque
-            <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-lg fa-sort-amount-desc" aria-hidden="true"></i></a>
+            Reading Time
+            <!--<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-lg fa-sort-amount-desc" aria-hidden="true"></i></a>-->
         </header>
 
-        <section class="view">
-            <div class="panel ">
-
-                <div id="book-list">
-                    <div class="cell">
-                        <i class="favorite on fa fa-star" aria-hidden="true"></i>
-                        <div class="poster">
-                            <img src="img/harry_potter_1.jpg">
-                        </div>
-                        <div class="infos">
-                            <div class="title">Harry Potter à l'école des sorciers </div>
-                            <div class="author">J.K Rowling</div>
-                            <div class="other">
-                                <div class="saw">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                </div>
-                                <div class="rate">
-                                    <span class="nb1">1</span> / <span class="nb2">10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cell">
-                        <i class="favorite fa fa-star" aria-hidden="true"></i>
-                        <div class="poster">
-                            <img src="img/harry_potter_1.jpg">
-                        </div>
-                        <div class="infos">
-                            <div class="title">Harry Potter à l'école des sorciers</div>
-                            <div class="author">J.K Rowling</div>
-                            <div class="other">
-                                <div class="saw">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                </div>
-                                <div class="rate">
-                                    <span class="nb1">2</span> / <span class="nb2">10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cell">
-                        <i class="favorite fa fa-star" aria-hidden="true"></i>
-                        <div class="poster">
-                            <img src="img/harry_potter_1.jpg">
-                        </div>
-                        <div class="infos">
-                            <div class="title">Harry Potter à l'école des sorciers</div>
-                            <div class="author">J.K Rowling</div>
-                            <div class="other">
-                                <div class="saw">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                </div>
-                                <div class="rate">
-                                    <span class="nb1">9</span> / <span class="nb2">10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cell">
-                        <i class="favorite fa fa-star" aria-hidden="true"></i>
-                        <div class="poster">
-                            <img src="img/harry_potter_1.jpg">
-                        </div>
-                        <div class="infos">
-                            <div class="title">Harry Potter à l'école des sorciers</div>
-                            <div class="author">J.K Rowling</div>
-                            <div class="other">
-                                <div class="saw">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                </div>
-                                <div class="rate">
-                                    <span class="nb1">7</span> / <span class="nb2">10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <section class="view" ng-view>
         </section>
 
-        <nav class="nav">
-            <a href="#library" class="active"><i class="fa fa-lg fa-book" aria-hidden="true"></i>
-            <a href="#add"><i class="fa fa-lg fa-plus" aria-hidden="true"></i></a>
+        <nav class="nav" ng-controller="navController">
+            <a href="#library" ng-click="menu='library'" ng-class="{active: menu=='library'}"><i class="fa fa-lg fa-book" aria-hidden="true"></i>
+            <a href="#search" ng-click="menu='search'" ng-class="{active: menu=='search'}"><i class="fa fa-lg fa-plus" aria-hidden="true"></i></a>
         </nav>
 
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/vendor/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+        <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+        <script type="text/javascript" src="js/controller/navController.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>
