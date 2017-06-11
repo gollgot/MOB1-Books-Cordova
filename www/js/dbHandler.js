@@ -167,3 +167,37 @@ function createBookList(db){
     }
 
 }
+
+/**
+* Add a book on the db
+*/
+function addBook(db){
+    db.transaction(function(tx) {
+        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?,?,?,?)',[
+            null,
+            'Harry Potter à l\'école des sorciers',
+            'J.K Rowling',
+            'harry_potter_1.jpg',
+            1,
+            0,
+            7,
+            123456,
+            ''
+        ]);
+        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?,?,?,?)',[
+            null,
+            'le seigneur des anneaux l\'intégrale',
+            'J.R.R. Tolkien',
+            'seigneur_des_anneaux.jpg',
+            0,
+            1,
+            9,
+            123456,
+            ''
+        ]);
+    }, function(error) {
+        alert('Transaction ERROR: ' + error.message);
+    }, function() {
+        alert('Populated database OK');
+    });
+}

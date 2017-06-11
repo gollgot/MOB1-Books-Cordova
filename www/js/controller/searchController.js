@@ -1,6 +1,6 @@
 function searchController($scope, $http) {
 	
-	//$scope.isbnInput = 9780702028441; // A default value, for dev, change later
+	$scope.isbnInput = 9780702028441; // A default value, for dev, change later
 	
 	// Function called when we submit the form (search)
 	$scope.search = function(){
@@ -10,6 +10,33 @@ function searchController($scope, $http) {
 	// Succes response
 	httpSuccess = function(response){
 		console.log(response);
+
+		if(response.items[0].volumeInfo.title){
+			var title = response.items[0].volumeInfo.title;
+		}else{
+			var title = "Inconnu";
+		}
+		if(response.items[0].volumeInfo.authors){
+			var author = response.items[0].volumeInfo.authors[0];
+		}else{
+			var author = "Inconnu";
+		}
+		if(response.items[0].volumeInfo.imageLinks.thumbnail){
+			var cover = response.items[0].volumeInfo.imageLinks.thumbnail;
+		}else{
+			var cover = "Inconnu";
+		}
+
+		console.log(title);
+		console.log(author);
+		console.log(cover);
+
+		var db = window.openDatabase("library", "1.0", "Library DB", 1000000);
+		addBook(db);
+
+		/*console.log(response.items[0].volumeInfo.title);
+		console.log(response.items[0].volumeInfo.authors[0]);
+		console.log(response.items[0].volumeInfo.imageLinks.thumbnail);*/
 	}
 	// Error response
 	httpError = function(){
