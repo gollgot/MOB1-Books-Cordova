@@ -7,7 +7,7 @@
 */
 function initTable(db){
     db.transaction(function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS books'); /* ONLY FOR DEVELOPMENT */
+        /*tx.executeSql('DROP TABLE IF EXISTS books'); /* ONLY FOR DEVELOPMENT */
         tx.executeSql('CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT, title, author, cover, favorite, read, rate, isbn, comment)');
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
@@ -100,7 +100,7 @@ function createBookList(db){
                 var cell = '';
 
                 if(nbElements == 0){
-                    cell += '<p>Aucun livre</p>';
+                    cell += '<p>Aucun livre, vous pouvez en ajouter en allant sur le bouton +</p>';
                 }else{
                     // travel all the elements on the DB and create the HTML for the current cell
                     for (var i = 0; i < nbElements; i++) {
@@ -171,33 +171,22 @@ function createBookList(db){
 /**
 * Add a book on the db
 */
-function addBook(db){
+function addBook(db, title, author, cover, isbn){
     db.transaction(function(tx) {
         tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?,?,?,?)',[
             null,
-            'Harry Potter à l\'école des sorciers',
-            'J.K Rowling',
-            'harry_potter_1.jpg',
-            1,
+            title,
+            author,
+            cover,
             0,
-            7,
-            123456,
-            ''
-        ]);
-        tx.executeSql('INSERT INTO books VALUES (?,?,?,?,?,?,?,?,?)',[
-            null,
-            'le seigneur des anneaux l\'intégrale',
-            'J.R.R. Tolkien',
-            'seigneur_des_anneaux.jpg',
             0,
-            1,
-            9,
-            123456,
+            0,
+            isbn,
             ''
         ]);
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
     }, function() {
-        alert('Populated database OK');
+        //alert('Populated database OK');
     });
 }

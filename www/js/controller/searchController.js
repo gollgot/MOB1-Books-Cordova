@@ -11,36 +11,33 @@ function searchController($scope, $http) {
 	httpSuccess = function(response){
 		console.log(response);
 
-		if(response.items[0].volumeInfo.title){
-			var title = response.items[0].volumeInfo.title;
+		// There is an item
+		if(response.items){
+			if(response.items[0].volumeInfo.title){
+				var title = response.items[0].volumeInfo.title;
+			}else{
+				var title = "Inconnu";
+			}
+			if(response.items[0].volumeInfo.authors){
+				var author = response.items[0].volumeInfo.authors[0];
+			}else{
+				var author = "Inconnu";
+			}
+			if(response.items[0].volumeInfo.imageLinks.thumbnail){
+				var cover = response.items[0].volumeInfo.imageLinks.thumbnail;
+			}else{
+				var cover = "Inconnu";
+			}
+
+			displayModal(true, title, author, cover, $scope.isbnInput);
 		}else{
-			var title = "Inconnu";
-		}
-		if(response.items[0].volumeInfo.authors){
-			var author = response.items[0].volumeInfo.authors[0];
-		}else{
-			var author = "Inconnu";
-		}
-		if(response.items[0].volumeInfo.imageLinks.thumbnail){
-			var cover = response.items[0].volumeInfo.imageLinks.thumbnail;
-		}else{
-			var cover = "Inconnu";
+			displayModal(false, null, null, null, null);
 		}
 
-		console.log(title);
-		console.log(author);
-		console.log(cover);
-
-		var db = window.openDatabase("library", "1.0", "Library DB", 1000000);
-		addBook(db);
-
-		/*console.log(response.items[0].volumeInfo.title);
-		console.log(response.items[0].volumeInfo.authors[0]);
-		console.log(response.items[0].volumeInfo.imageLinks.thumbnail);*/
 	}
 	// Error response
 	httpError = function(){
-		alert("Impossible de récupérer ce livre, vérifiez le numéro ISBN ou votre connexion internet");
+		displayModal(false, null, null, null, null);
 	}
 
 	// Function called when we clic on the scan button
@@ -78,6 +75,75 @@ function searchController($scope, $http) {
 	          	disableSuccessBeep: false // iOS
 	      	}
 	   	);
+	}
+
+	function displayModal(success, title, author, cover, isbn){
+		if(success){
+			var modal = `
+				<div id="searchModal" class="modal">
+					<div class="modal-content">
+						<h5>Un résultat à été trouvé</h5>
+						<p>
+							<b>Titre du livre</b><br>
+							`+title+`
+						</p>
+						<p>
+							<b>Auteur</b><br>
+							`+author+`
+						</p>
+						<p>
+							<b>Couverture</b><br>
+							<img src="`+cover+`">
+						</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#search" class="modal-action modal-close waves-effect waves-red btn-flat ">Annuler</a>
+						<a class="importBtn waves-effect waves-green btn-flat">Importer</a>
+					</div>
+				</div>	
+			`;
+		}else{
+			var modal = `
+				<div id="searchModal" class="modal">
+					<div class="modal-content">
+						<h5>Aucun résultat trouvé</h5>
+						<p>
+							Aucun résultat n'a été trouvé, veuillez vérifier le numéro ISBN ou votre connexion internet
+						</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#search" class="modal-action modal-close waves-effect waves-red btn-flat ">Quitter</a>
+					</div>
+				</div>	
+			`;
+		}
+
+		// Add the html do the body
+		$('body').prepend(modal);
+
+		// Initialize the modal
+		$('.modal').modal({
+			dismissible: true, // Modal can be dismissed by clicking outside of the modal
+			opacity: .5, // Opacity of modal background
+			inDuration: 300, // Transition in duration
+			outDuration: 200, // Transition out duration
+			startingTop: '4%', // Starting top style attribute
+			endingTop: '10%', // Ending top style attribute
+			ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+			},
+			complete: function() {
+			}	
+		});
+
+		// open the modal
+	  	$('#searchModal').modal('open');
+
+	  	$('#searchModal a.importBtn').click(function(){
+	  		var db = window.openDatabase("library", "1.0", "Library DB", 1000000);
+			addBook(db, title, author, cover);
+	  		$('#searchModal').modal('close');
+	  		document.location.href="#library"
+	  	});
 	}
 
 }
