@@ -111,6 +111,7 @@ function createBookList(db){
                         var favorite = rs.rows.item(i).favorite;
                         var read = rs.rows.item(i).read;
                         var rate = rs.rows.item(i).rate;
+                        var isbn = rs.rows.item(i).isbn;
                         
                         // concat each cell, to have one big html code with all cell
                         cell += '<div class="cell" data-id="'+id+'">';
@@ -121,9 +122,15 @@ function createBookList(db){
                             cell += '<i class="favorite on fa fa-star" aria-hidden="true"></i>';
                         }
 
-                        cell += `
-                                <div class="poster">
-                                    <img src="img/`+cover+`">
+                        cell += `<div class="poster">`;
+
+                        if(canGetTheImageOnInternet(isbn)){
+                            cell += '<img src="'+cover+'">';
+                        }else{
+                            cell += '<img src="img/no_cover.jpg">';
+                        }
+                        
+                        cell += `       
                                 </div>
                                 <div class="infos">
                                     <div class="title">`+title+`</div>
@@ -189,4 +196,25 @@ function addBook(db, title, author, cover, isbn){
     }, function() {
         //alert('Populated database OK');
     });
+}
+
+
+function canGetTheImageOnInternet(isbn){
+    var internet = false;
+    $.ajax({
+        type:"GET",
+        url:"https://www.googleapis.com/books/v1/volumes?q=isbn:9780702028441",
+        async: false,
+    }, function() {
+        internet = true;
+
+        console.log("OUI");
+    })
+    .fail(function() {
+        internet = false;
+        console.log("NON");
+    });
+    console.log(internet);
+    return internet;
+
 }

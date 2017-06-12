@@ -4,7 +4,7 @@ function searchController($scope, $http) {
 	
 	// Function called when we submit the form (search)
 	$scope.search = function(){
-		var url = "https://www.googleapis.com/books/v1/volumes?q="+$scope.isbnInput;
+		var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:"+$scope.isbnInput;
 		$http.get(url).success(httpSuccess).error(httpError);
 	}
 	// Succes response
@@ -144,7 +144,7 @@ function searchController($scope, $http) {
 	  	$('#searchModal').modal('open');
 
 	  	$('#searchModal a.importBtn').click(function(){
-	  		var db = window.openDatabase("library", "1.0", "Library DB", 1000000);
+	  		var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
 			addBook(db, title, author, cover);
 	  		$('#searchModal').modal('close');
 	  		document.location.href="#library"

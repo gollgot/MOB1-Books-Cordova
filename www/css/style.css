@@ -136,7 +136,7 @@ body{
     height: 120px;
 }
 .cell .poster img{
-	height:100%;
+	height:90%;
 }
 .cell .infos {
     display: inline-block;
