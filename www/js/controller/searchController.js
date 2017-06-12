@@ -23,7 +23,7 @@ function searchController($scope, $http) {
 			}else{
 				var author = "Inconnu";
 			}
-			if(response.items[0].volumeInfo.imageLinks.thumbnail){
+			if(response.items[0].volumeInfo.imageLinks){
 				var cover = response.items[0].volumeInfo.imageLinks.thumbnail;
 			}else{
 				var cover = "Inconnu";
@@ -92,8 +92,13 @@ function searchController($scope, $http) {
 							`+author+`
 						</p>
 						<p>
-							<b>Couverture</b><br>
-							<img src="`+cover+`">
+							<b>Couverture</b><br>`;
+							if(cover == 'Inconnu'){
+								modal += 'inconnu';
+							}else{
+								modal += '<img src="'+cover+'">';
+							}
+					modal += `
 						</p>
 					</div>
 					<div class="modal-footer">
