@@ -148,7 +148,7 @@ function searchController($scope, $http) {
 
 	  	$('#searchModal a.importBtn').click(function(){
 	  		var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
-			addBook(db, title, author, cover);
+			addBook(db, title, author, cover, $scope.isbnInput);
 	  		$('#searchModal').modal('close');
 	  		document.location.href="#library"
 	  	});
