@@ -1,13 +1,22 @@
-<section ng-controller="searchController" class="panel">
+<section ng-controller="searchController" class="panel search">
 
 	<p>veuillez entrer un numéro ISBN, ou scanner le code bar de votre livre</p>
 
-	<form ng-submit="search()">
-		<input id="isbn" type="number" min="0" placeholder="Numéro ISBN" ng-model="isbnInput">
-		<input type="submit" value="Rechercher">
-	</form>
 
-	<br>
-	<input type="button" value="Scanner" ng-click="scan()">
+  	<form id="searchForm" ng-submit="search()">
+		<input id="isbn" type="number" min="0" placeholder="Numéro ISBN" ng-model="isbnInput">
+		<div class="leftBox">
+			<button type="button" class="btn waves-effect waves-light" ng-click="scan()">
+				<i class="ic_camera fa fa-camera" aria-hidden="true"></i>
+				Scanner
+		  	</button>
+		</div>
+		<div class="rightBox">
+			<button type="submit" class="btn waves-effect waves-light">
+				Rechercher
+				<i class="ic_send fa fa-paper-plane" aria-hidden="true"></i>
+		  	</button>
+	  	</div>
+	</form>
 
 </section>

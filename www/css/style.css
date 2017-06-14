@@ -196,3 +196,32 @@ body{
 	font-weight: bold;
 	margin-top: 15px;
 } 
+
+/*------------------------------*\
+	VIEW LIBRARY
+\*------------------------------*/
+.search #searchForm button{
+	width: 100%;
+    padding: 0px!important;
+}
+
+.search #searchForm .leftBox{
+	display: inline-block;
+    width: 50%;
+    float: left;
+    padding: 0px 10px;
+}
+.search #searchForm .leftBox button i.ic_camera{
+	margin-right: 10px;
+}
+
+.search #searchForm .rightBox{
+	display: inline-block;
+    width: 50%;
+    padding: 0px 10px;
+}
+.search #searchForm .rightBox button i.ic_send{
+	margin-left: 10px;
+}
+
+

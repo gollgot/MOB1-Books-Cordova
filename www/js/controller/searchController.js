@@ -3,7 +3,7 @@ function searchController($scope, $http) {
 	$("header h5.title").text("Recherche");
 
 	
-	$scope.isbnInput = 9780702028441; // A default value, for dev, change later
+	//$scope.isbnInput = 9780702028441; // A default value, for dev, change later
 	
 	// Function called when we submit the form (search)
 	$scope.search = function(){
@@ -62,7 +62,7 @@ function searchController($scope, $http) {
 	      	},
 	      	// Error
 	      	function (error) {
-          		alert("Erreur, format ou code bar invalide");
+          		//alert("Erreur, format ou code bar invalide");
       		},
       		// Settings
 	      	{
