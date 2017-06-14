@@ -24,6 +24,9 @@ body{
 	font-weight: bold;
 	padding-left:20px;
 }
+.header h5{
+	margin: 15px 0px 0px 0px;
+}
 .header i {
     float: right;
     margin-top: 22px;
@@ -35,6 +38,12 @@ body{
 }
 .header a{
 	color:#FFF;
+}
+.header i.settings{
+	font-size: 30px;
+    position: absolute;
+    top: -4px;
+    right: 0px;
 }
 
 .view{
@@ -107,6 +116,14 @@ body{
 	border-right: 1px solid #f1f1f1;
 	/* Obligatory to prevent bug because width 50% + border = > 50% . So box-sizing prevent that */
 	box-sizing: border-box; 
+}
+
+/*------------------------------*\
+	VIEW SETTINGS
+\*------------------------------*/
+
+.view h5{
+	text-align: center;
 }
 
 /*------------------------------*\

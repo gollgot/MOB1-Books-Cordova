@@ -9,8 +9,9 @@ var app = angular.module('app', []);
 // Route
 app.config(function($routeProvider){
 	$routeProvider
-		.when('/library', {templateUrl: 'view/library.html'})
-		.when('/search', {templateUrl: 'view/search.html'})
+		.when('/library', {templateUrl: 'views/library.html'})
+		.when('/search', {templateUrl: 'views/search.html'})
+		.when('/settings', {templateUrl: 'views/settings.html'})
 		.otherwise({redirectTo: '/library'});
 });
 

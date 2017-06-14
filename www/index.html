@@ -17,9 +17,10 @@
     <body>
         
         <header class="header">
-            Reading Time
+            <h5>Reading Time</h5>
             <!--<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
             <a href="#"><i class="fa fa-lg fa-sort-amount-desc" aria-hidden="true"></i></a>-->
+            <a href="#settings" onClick="test()"><i class="settings fa fa-lg fa-cog" aria-hidden="true"></i></a>
         </header>
 
         <section class="view" ng-view>
@@ -38,6 +39,7 @@
         <script type="text/javascript" src="js/httpConnection.js"></script>
         <script type="text/javascript" src="js/dbHandler.js"></script>
         <script type="text/javascript" src="js/controller/navController.js"></script>
+        <script type="text/javascript" src="js/controller/settingsController.js"></script>
         <script type="text/javascript" src="js/controller/libraryController.js"></script>
         <script type="text/javascript" src="js/controller/searchController.js"></script>
     </body>
