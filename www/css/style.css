@@ -24,7 +24,7 @@ body{
 	font-weight: bold;
 	padding-left:20px;
 }
-.header h5{
+.header h5.title{
 	margin: 15px 0px 0px 0px;
 }
 .header i {

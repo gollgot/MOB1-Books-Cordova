@@ -1,4 +1,7 @@
 function searchController($scope, $http) {
+	// Change the app title on the header
+	$("header h5.title").text("Recherche");
+
 	
 	$scope.isbnInput = 9780702028441; // A default value, for dev, change later
 	
