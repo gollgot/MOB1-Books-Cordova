@@ -124,7 +124,7 @@ function createBookList(db){
 
                         cell += `<div class="poster">`;
 
-                        if(canGetTheImageOnInternet(isbn)){
+                        if(hasInternet() && cover != "Inconnu"){
                             cell += '<img src="'+cover+'">';
                         }else{
                             cell += '<img src="img/no_cover.jpg">';
