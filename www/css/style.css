@@ -122,9 +122,22 @@ body{
 	VIEW SETTINGS
 \*------------------------------*/
 
-.view h5{
+section.settings #settingsForm{
+	margin-top:15px;
+}
+section.settings #settingsForm .boxToCenter{
+	width:100%;
 	text-align: center;
 }
+section.settings #settingsForm button{
+	text-align: center;
+}
+section.settings #settingsForm .ic_save{
+	margin-right: 10px;
+}
+
+
+
 
 /*------------------------------*\
 	VIEW LIBRARY
@@ -198,7 +211,7 @@ body{
 } 
 
 /*------------------------------*\
-	VIEW LIBRARY
+	VIEW SEARCH
 \*------------------------------*/
 .search #searchForm button{
 	width: 100%;
