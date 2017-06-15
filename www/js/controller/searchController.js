@@ -6,24 +6,27 @@ function searchController($scope, $http) {
 	
 	// Function called when we submit the form (search)
 	$scope.search = function(){
-		// Create or get the library DB
-	    var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
-	    // Callback function, called when we do the sql request
-	    var test = function(serverName){
-	    	var url = serverName+"?q=isbn:"+$scope.isbnInput;
-	    	$http.get(url).success(httpSuccess).error(httpError);
-	    }
-	    // Function define in dbHandler.js
-	    getServerName(db, test);
+		// If has internet connection, do the request ajax, else, display error
+		if(hasInternet()){
+			// Create or get the library DB
+		    var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
+		    // Callback function, called when we do the sql request
+		    var test = function(serverName){
+		    	var url = serverName+"?q=isbn:"+$scope.isbnInput;
+		    	$http.get(url).success(httpSuccess).error(httpError);
+		    }
+		    // Function define in dbHandler.js
+		    getServerName(db, test);
 
-	    // Don't remove this, this is a fake request, mandatory for the good fonctionnement... If we remove that, we have to click 2 times, don't now why, asynchrone SQL request problem ?
-		$http.get("https://www.googleapis.com/books/v1/volumes?q=isbn:123").success(function(){}).error(function(){});
+		    // Don't remove this, this is a fake request, mandatory for the good fonctionnement... If we remove that, we have to click 2 times, don't now why, asynchrone SQL request problem ?
+			$http.get("https://www.googleapis.com/books/v1/volumes?q=isbn:123").success().error();
+		}else{
+			displayModal(false, null, null, null, null);
+		}
 	}
 
 	// Succes response
 	httpSuccess = function(response){
-		console.log(response);
-
 		// There is an item
 		if(response.items){
 			if(response.items[0].volumeInfo.title){
@@ -50,7 +53,10 @@ function searchController($scope, $http) {
 	}
 	// Error response
 	httpError = function(){
-		displayModal(false, null, null, null, null);
+		//alert($('#searchModal').length);
+		 if (!$('#searchModal').length) {
+			displayModal(false, null, null, null, null);
+		}
 	}
 
 	// Function called when we clic on the scan button
@@ -150,6 +156,7 @@ function searchController($scope, $http) {
 			ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 			},
 			complete: function() {
+				$("#searchModal").remove();
 			}	
 		});
 
