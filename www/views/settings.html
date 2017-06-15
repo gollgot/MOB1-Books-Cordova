@@ -1,10 +1,10 @@
 <section ng-controller="settingsController" class="panel settings">
-	<form id="settingsForm">
+	<form id="settingsForm" ng-submit="save()">
 		<span><b>Adresse du serveur API :</b></span>
 		<input id="serverName" type="text" placeholder="Adresse" ng-model="serverName" required>
 		<p class="carefull">Attention : changer cette adresse peut entraver le bon fonctionnement de l'application !</p>
 		<div class="boxToCenter">
-			<button type="button" class="btn waves-effect waves-light" ng-click="save()">
+			<button type="submit" class="btn waves-effect waves-light">
 				<i class="ic_save fa fa-floppy-o" aria-hidden="true"></i>
 				Sauvegarder
 		  	</button>
