@@ -50,10 +50,10 @@ function populateSettingsIfFirstTime(db){
 * Get the serverName in the Settings table, and set it in the input of settingsForm
 * I cannot return the value to the settingsController, so I change the value after the request ...
 */
-function getServerNameAndSetContentInInput(db){
+function getServerName(db, callback){
     db.transaction(function(tx) {
         tx.executeSql('SELECT serverName FROM settings', [], function(tx, rs) {
-            $("#settingsForm #serverName").val(rs.rows.item(0).serverName);
+            callback(rs.rows.item(0).serverName);
         }, function(tx, error) {
             alert('SELECT error: ' + error.message);
         });

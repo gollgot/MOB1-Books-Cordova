@@ -4,10 +4,18 @@ function settingsController($scope){
 
 	// Create or get the library DB
     var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
-    getServerNameAndSetContentInInput(db);
+    
+    // Callback function, called when we do the sql request
+    var setServerNameToInput = function(serverName){
+    	$("#settingsForm #serverName").val(serverName);
+    }
+
+    // Function define in dbHandler.js
+    getServerName(db, setServerNameToInput);
 
     $scope.save = function(){
     	updateSettings(db, $("#settingsForm #serverName").val());
     }
 	
+
 }
