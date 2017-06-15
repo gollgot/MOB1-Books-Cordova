@@ -9,10 +9,39 @@ function initTable(db){
     db.transaction(function(tx) {
         /*tx.executeSql('DROP TABLE IF EXISTS books'); /* ONLY FOR DEVELOPMENT */
         tx.executeSql('CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT, title, author, cover, favorite, read, rate, isbn, comment)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT, serverName)');
+        populateSettingsIfFirstTime(db);
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
     }, function() {
         //alert('Initialisation table Books OK');
+    });
+}
+
+
+/**
+* populate the settings class with the default serverName if this is the first time
+*/
+function populateSettingsIfFirstTime(db){
+    db.transaction(function(tx) {
+        // Get the count of servername (exists if > 0)
+        tx.executeSql('SELECT count(serverName) as count  FROM settings', [], function(tx, rs) {
+            // Doesn't exists
+            if(rs.rows.item(0).count == 0){
+                // Set the default serverName
+                db.transaction(function(tx) {
+                    tx.executeSql('INSERT INTO settings VALUES (?,?)',[
+                        null,
+                        'https://www.googleapis.com/books/v1/volumes',
+                    ]);
+                }, function(error) {
+                    alert('Transaction ERROR: ' + error.message);
+                }, function() {
+                });
+            }
+        }, function(tx, error) {
+            alert('SELECT error: ' + error.message);
+        });
     });
 }
 
