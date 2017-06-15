@@ -125,6 +125,11 @@ body{
 section.settings #settingsForm{
 	margin-top:15px;
 }
+section.settings #settingsForm p.carefull{
+	margin-top: -10px;
+	color:#F00;
+	font-size: 12px;
+}
 section.settings #settingsForm .boxToCenter{
 	width:100%;
 	text-align: center;

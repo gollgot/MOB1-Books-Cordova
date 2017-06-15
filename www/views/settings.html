@@ -1,7 +1,8 @@
 <section ng-controller="settingsController" class="panel settings">
 	<form id="settingsForm">
 		<span><b>Adresse du serveur API :</b></span>
-		<input id="serverName" type="text" placeholder="Adresse" ng-model="serverName" required>
+		<input id="serverName" type="text" placeholder="Adresse" required>
+		<p class="carefull">Attention : changer cette adresse peut entraver le bon fonctionnement de l'application !</p>
 		<div class="boxToCenter">
 			<button type="button" class="btn waves-effect waves-light" ng-click="save()">
 				<i class="ic_save fa fa-floppy-o" aria-hidden="true"></i>

@@ -5,5 +5,9 @@ function settingsController($scope){
 	// Create or get the library DB
     var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
     getServerNameAndSetContentInInput(db);
+
+    $scope.save = function(){
+    	updateSettings(db, $("#settingsForm #serverName").val());
+    }
 	
 }
