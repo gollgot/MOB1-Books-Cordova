@@ -4,7 +4,7 @@
 
 
   	<form id="searchForm" ng-submit="search()">
-		<input id="isbn" type="number" min="0" placeholder="Numéro ISBN" ng-model="isbnInput">
+		<input id="isbn" type="number" min="0" placeholder="Numéro ISBN" ng-model="isbnInput" required>
 		<div class="leftBox">
 			<button type="button" class="btn waves-effect waves-light" ng-click="scan()">
 				<i class="ic_camera fa fa-camera" aria-hidden="true"></i>
