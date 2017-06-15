@@ -133,9 +133,12 @@ section.settings #settingsForm p.carefull{
 section.settings #settingsForm .boxToCenter{
 	width:100%;
 	text-align: center;
+	padding: 0px 50px;
 }
 section.settings #settingsForm button{
+	margin-top: 20px;
 	text-align: center;
+    width: 100%;
 }
 section.settings #settingsForm .ic_save{
 	margin-right: 10px;
