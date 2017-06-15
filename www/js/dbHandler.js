@@ -20,7 +20,7 @@ function initTable(db){
 
 
 /**
-* populate the settings class with the default serverName if this is the first time
+* populate the settings table with the default serverName if this is the first time
 */
 function populateSettingsIfFirstTime(db){
     db.transaction(function(tx) {
@@ -39,6 +39,22 @@ function populateSettingsIfFirstTime(db){
                 }, function() {
                 });
             }
+        }, function(tx, error) {
+            alert('SELECT error: ' + error.message);
+        });
+    });
+}
+
+
+/**
+* Get the serverName in the Settings table, and set it in the input of settingsForm
+* I cannot return the value to the settingsController, so I change the value after the request ...
+*/
+var serverName;
+function getServerNameAndSetContentInInput(db){
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT serverName FROM settings', [], function(tx, rs) {
+            $("#settingsForm #serverName").val(rs.rows.item(0).serverName);
         }, function(tx, error) {
             alert('SELECT error: ' + error.message);
         });
