@@ -47,13 +47,25 @@ function populateSettingsIfFirstTime(db){
 
 
 /**
-* Get the serverName in the Settings table, and set it in the input of settingsForm
-* I cannot return the value to the settingsController, so I change the value after the request ...
+* Get the serverName in the Settings table, and give it to the callback parameter
 */
 function getServerName(db, callback){
     db.transaction(function(tx) {
         tx.executeSql('SELECT serverName FROM settings', [], function(tx, rs) {
             callback(rs.rows.item(0).serverName);
+        }, function(tx, error) {
+            alert('SELECT error: ' + error.message);
+        });
+    });
+}
+
+/**
+* Get the details of a specific book, and give it to the callback parameter
+*/
+function getBookDetails(db, id, callback){
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM books WHERE id=?', [id], function(tx, rs) {
+            callback(rs.rows.item(0).title);
         }, function(tx, error) {
             alert('SELECT error: ' + error.message);
         });

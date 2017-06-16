@@ -11,12 +11,12 @@ function searchController($scope, $http) {
 			// Create or get the library DB
 		    var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
 		    // Callback function, called when we do the sql request
-		    var test = function(serverName){
+		    var getBookAjax = function(serverName){
 		    	var url = serverName+"?q=isbn:"+$scope.isbnInput;
 		    	$http.get(url).success(httpSuccess).error(httpError);
 		    }
 		    // Function define in dbHandler.js
-		    getServerName(db, test);
+		    getServerName(db, getBookAjax);
 
 		    // Don't remove this, this is a fake request, mandatory for the good fonctionnement... If we remove that, we have to click 2 times, don't now why, asynchrone SQL request problem ?
 			$http.get("https://www.googleapis.com/books/v1/volumes?q=isbn:123").success().error();
