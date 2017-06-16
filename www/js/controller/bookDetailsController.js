@@ -1,3 +1,5 @@
 function bookDetailsController(){
-	alert("details");
+	var params = window.location.href.split('/');
+	var id = params[params.length-1];
+	alert(id);
 }

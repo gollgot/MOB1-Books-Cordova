@@ -171,7 +171,7 @@ function createBookList(db){
                         var isbn = rs.rows.item(i).isbn;
                         
                         // concat each cell, to have one big html code with all cell
-                        cell += '<a href="#book-details"><div class="cell" data-id="'+id+'">';
+                        cell += '<a href="#book-details/'+id+'"><div class="cell">';
 
                         if(favorite == 0){
                             cell += '<i class="favorite fa fa-star" aria-hidden="true"></i>';
@@ -217,11 +217,6 @@ function createBookList(db){
                 list.html(cell);
                 // Add the list to the current panel (the current application view)
                 $(".panel").append(list);
-
-                $(".cell").click(function(){
-                    var bookId = $(this).data("id");
-                    alert(bookId);
-                });
                 
             }, function(tx, error) {
                 alert('SELECT error: ' + error.message);
