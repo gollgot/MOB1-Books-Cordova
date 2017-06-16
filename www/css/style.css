@@ -150,6 +150,9 @@ section.settings #settingsForm .ic_save{
 /*------------------------------*\
 	VIEW LIBRARY
 \*------------------------------*/
+a {
+	color:#000;
+}
 
 .cell{
     margin-top: 10px;

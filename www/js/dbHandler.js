@@ -171,7 +171,7 @@ function createBookList(db){
                         var isbn = rs.rows.item(i).isbn;
                         
                         // concat each cell, to have one big html code with all cell
-                        cell += '<div class="cell" data-id="'+id+'">';
+                        cell += '<a href="#book-details"><div class="cell" data-id="'+id+'">';
 
                         if(favorite == 0){
                             cell += '<i class="favorite fa fa-star" aria-hidden="true"></i>';
@@ -207,6 +207,7 @@ function createBookList(db){
                                 </div>
                             </div>
                         </div>
+                        </a>
                         `;
                         
                     }

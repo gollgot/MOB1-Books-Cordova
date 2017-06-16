@@ -12,6 +12,7 @@ app.config(function($routeProvider){
 		.when('/library', {templateUrl: 'views/library.html'})
 		.when('/search', {templateUrl: 'views/search.html'})
 		.when('/settings', {templateUrl: 'views/settings.html'})
+		.when('/book-details', {templateUrl: 'views/bookDetails.html'})
 		.otherwise({redirectTo: '/library'});
 });
 
