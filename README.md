@@ -5,9 +5,9 @@ Reading Time is a personal library management app. You can add some books in the
 ### Installation
 *All the command will be execute on the project folder*
 
-First, you have to install [Node.js](https://nodejs.org), don't forget to add Node on your system PATH. After that, you can install Cordova with this command : `npm install -g Cordova`.
+First, you have to install [Node.js](https://nodejs.org), don't forget to add Node on your system PATH if is not already set. After that, you can install Cordova with this command : `npm install -g cordova`.
 
-Then you can run this command : `npm install`, to install all dependencies require for the project. It will be download all dependencies define on the package.json file.
+Then you can run this command : `npm install`, to install all dependencies which define in the package.json file.
 
 ### Platforms
 The app is guarrantee with the google chrome browser and android >= Android 4.1 Jelly Bean (API 16). You don't have any platforms on your project yet. So you have to add anything you want between the two.
