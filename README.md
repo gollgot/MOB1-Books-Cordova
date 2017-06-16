@@ -29,6 +29,10 @@ To build an android APK for development test (fully usable and no signature requ
 *Be carefull, to install a "unofficial" you mustsetting up your device : Settings -> Security and lock screen -> Allow to installation from unknown sources*
 
 ### Plugins used
-With cordova, you can find on the internet many plugins and install them easely. You have a "plugins" directory on your project directory. Here is all the plugins I installed :
+With cordova, you can find on the internet many plugins and install them easily. You have a "plugins" directory on your project directory. Here is all the plugins used :
 
 - **Cordova Browser-Sync Plugin :** This is a simple plugin to have a sync refresh on our browser / android virtual device when we save our code or refresh the page. Follow this [GIT repo](https://github.com/nparashuram/cordova-plugin-browsersync) to see complete description and specific commands. 
+
+- **Cordova Sqlite Storage :** This is a plugin to use Sqlite database in the project. I use it to store all the books, and the settings. You can follow this [Git repo](https://github.com/litehelpers/Cordova-sqlite-storage) to have more detail about the plugin.
+
+- **Phonegap Barcode Scanner :** This is a very easy to use plugin which will enable you to use the camera and scan barcode to find the isbn number of books. You can follow this [Git repo](https://github.com/phonegap/phonegap-plugin-barcodescanner) to have more detail about the plugin.
