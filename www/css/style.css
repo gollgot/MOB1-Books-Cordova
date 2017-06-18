@@ -251,4 +251,71 @@ a {
 	margin-left: 10px;
 }
 
+/*------------------------------*\
+	VIEW BOOK DETAILS
+\*------------------------------*/
 
+section.bookDetails img.cover{
+	float:left;
+	width: 115px;
+	margin-top: 10px;
+	margin-right: 10px
+}
+section.bookDetails .details{
+	display: inline;
+}
+section.bookDetails .details p{
+	margin: 10px 0px 0px 0px;
+	padding: 0px;
+}
+section.bookDetails .details p.title{
+	font-weight: bold;
+	font-size: 16px;
+}
+section.bookDetails .details p.author{
+    font-size: 14px;
+    color: #888;
+}
+section.bookDetails .details i.eye{
+	margin-top: 10px;
+	font-size: 35px;
+	margin-right: 20px;
+}
+section.bookDetails .details i.no-read{
+	color:#F44336 ;
+}
+section.bookDetails .details i.read{
+	color:#45BF55;
+}
+section.bookDetails .details i.star{
+	font-size: 35px;
+}
+section.bookDetails .details i.no-favorite{
+	color: #888;
+}
+section.bookDetails .details i.favorite{
+	color: #FFD10F;
+}
+section.bookDetails .details input.rate{
+	width: inherit; 
+	font-size: 20px;
+}
+section.bookDetails .details span.on10{
+	font-size: 20px;
+}
+section.bookDetails .details a.btn-floating{
+	float: right;
+	margin-top:10px; 
+}
+section.bookDetails textarea.personalNotes{
+	min-height:100px; 
+}
+section.bookDetails .boxToCenter{
+	padding:0px 40px;
+	width: 100%;
+	text-align: center;
+}
+section.bookDetails .boxToCenter button{
+	margin-top: 40px;
+	width: 100%;
+}

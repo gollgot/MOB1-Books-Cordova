@@ -65,7 +65,15 @@ function getServerName(db, callback){
 function getBookDetails(db, id, callback){
     db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM books WHERE id=?', [id], function(tx, rs) {
-            callback(rs.rows.item(0).title);
+            var title = rs.rows.item(0).title;
+            var author = rs.rows.item(0).author;
+            var cover = rs.rows.item(0).cover;
+            var favorite = rs.rows.item(0).favorite;
+            var read = rs.rows.item(0).read;
+            var rate = rs.rows.item(0).rate;
+            var isbn = rs.rows.item(0).isbn;
+            var comment = rs.rows.item(0).comment;
+            callback(title, author, cover, favorite, read, rate, isbn, comment);
         }, function(tx, error) {
             alert('SELECT error: ' + error.message);
         });
@@ -254,7 +262,7 @@ function addBook(db, title, author, cover, isbn){
             0,
             0,
             isbn,
-            ''
+            'A simple comment'
         ]);
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);

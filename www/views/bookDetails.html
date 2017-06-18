@@ -1,3 +1,23 @@
 <section ng-controller="bookDetailsController" class="panel bookDetails">
-	
+	<img class="cover" src="img/no_cover.jpg">
+	<div class="details">
+		<p class="title"></p>
+		<p class="author"></p>
+		<i class="eye no-read fa fa-eye" aria-hidden="true"></i>
+		<i class="star no-favorite fa fa-star" aria-hidden="true"></i>
+		<a class="btn-floating waves-effect waves-light red"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+		<br>
+		<input type="number" min="0" max="10" class="rate" required> <span class="on10">/ 10</span>
+	</div>
+
+	<p>Notes personnelles : </p>
+	<textarea class="personalNotes"></textarea>
+
+	<div class="boxToCenter">
+		<button type="submit" class="btn waves-effect waves-light">
+			<i class="ic_save fa fa-floppy-o" aria-hidden="true"></i>
+			Sauvegarder
+	  	</button>
+	</div>
+
 </section>
