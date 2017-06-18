@@ -28,10 +28,14 @@ To build an android APK for development test (fully usable and no signature requ
 
 *Be carefull, to install a "unofficial" you mustsetting up your device : Settings -> Security and lock screen -> Allow to installation from unknown sources*
 
+### Problems
+When you try to run the project in a platform, you may have this probem displayed : *Error: Cannot find module <a module name>*. In this case, run this command : `npm install`. It will be install all module dependancies in a node_modules folder.
+
+
 ### Plugins used
 With cordova, you can find on the internet many plugins and install them easily. You have a "plugins" directory on your project directory. Here is all the plugins used :
 
-- **Cordova Browser-Sync Plugin :** This is a simple plugin to have a sync refresh on our browser / android virtual device when we save our code or refresh the page. Follow this [GIT repo](https://github.com/nparashuram/cordova-plugin-browsersync) to see complete description and specific commands. 
+- **Cordova Browser-Sync Plugin :** This is a simple plugin to have a sync refresh on our browser / android virtual device when we save our code or refresh the page. The default address is : http://localhost:8000. Follow this [GIT repo](https://github.com/nparashuram/cordova-plugin-browsersync) to see complete description and specific commands. 
 
 - **Cordova Sqlite Storage :** This is a plugin to use Sqlite database in the project. I use it to store all the books, and the settings. You can follow this [Git repo](https://github.com/litehelpers/Cordova-sqlite-storage) to have more detail about the plugin.
 
