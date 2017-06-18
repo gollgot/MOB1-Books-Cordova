@@ -2,10 +2,10 @@
 <widget id="ch.cpnv.reading_time" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Reading Time</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Reading Time is a personal library management app. You can add some books in the app with our ISBN searching functionnality (manually or you can scan a barcode). After that you have a book's collection and you can easily see your favorite books, if you have already saw the book or no, give them a rate, etc. 
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="loic.dessaules@cpnv.ch" href="http://cpnv.ch">
+        Dessaules Loïc
     </author>
     <content src="index.html" />
     <access origin="*" />
