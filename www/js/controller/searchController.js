@@ -9,7 +9,7 @@ function searchController($scope, $http) {
 		// If has internet connection, do the request ajax, else, display error
 		if(hasInternet()){
 			// Create or get the library DB
-		    var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
+		    var db = window.openDatabase("library_prod", "1.0", "Library DB", 1000000);
 		    // Callback function, called when we do the sql request
 		    var getBookAjax = function(serverName){
 		    	var url = serverName+"?q=isbn:"+$scope.isbnInput;
@@ -164,7 +164,7 @@ function searchController($scope, $http) {
 	  	$('#searchModal').modal('open');
 
 	  	$('#searchModal a.importBtn').click(function(){
-	  		var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
+	  		var db = window.openDatabase("library_prod", "1.0", "Library DB", 1000000);
 			addBook(db, title, author, cover, $scope.isbnInput);
 	  		$('#searchModal').modal('close');
 	  		document.location.href="#library"

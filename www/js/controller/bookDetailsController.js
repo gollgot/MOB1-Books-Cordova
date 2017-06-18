@@ -22,7 +22,7 @@ function bookDetailsController($scope){
     }
     
     // Create or get the library DB
-    var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
+    var db = window.openDatabase("library_prod", "1.0", "Library DB", 1000000);
     // Function define in dbHandler.js with a callback function
     getBookDetails(db, id, buildBookDetailsPage);
 

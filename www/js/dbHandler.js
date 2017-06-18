@@ -95,7 +95,7 @@ function updateSettings(db, newServerName){
 
 
 /**
-* populate the DB with fake datas
+* populate the DB with fake datas => for developpment
 */
 function populate(db){
     db.transaction(function(tx) {

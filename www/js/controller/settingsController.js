@@ -3,7 +3,7 @@ function settingsController($scope){
 	$("header h5.title").text("Settings");
 
 	// Create or get the library DB
-    var db = window.openDatabase("library_dev", "1.0", "Library DB", 1000000);
+    var db = window.openDatabase("library_prod", "1.0", "Library DB", 1000000);
     
     // Callback function, called when we do the sql request
     var setServerNameToInput = function(serverName){
