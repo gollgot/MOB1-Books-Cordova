@@ -171,7 +171,7 @@ function createBookList(db){
     */
     function createList(nbElements){
         db.transaction(function(tx) {
-            tx.executeSql('SELECT * FROM books', [], function(tx, rs) {
+            tx.executeSql('SELECT * FROM books ORDER BY favorite DESC, title ASC', [], function(tx, rs) {
 
                 var list = $("#book-list");
                 var cell = '';
