@@ -272,22 +272,15 @@ function addBook(db, title, author, cover, isbn){
 }
 
 
-function canGetTheImageOnInternet(isbn){
-    var internet = false;
-    $.ajax({
-        type:"GET",
-        url:"https://www.googleapis.com/books/v1/volumes?q=isbn:9780702028441",
-        async: false,
-    }, function() {
-        internet = true;
-
-        console.log("OUI");
-    })
-    .fail(function() {
-        internet = false;
-        console.log("NON");
+/**
+* Delete a specific book
+*/
+function deleteBook(db, id){
+    db.transaction(function(tx) {
+        tx.executeSql('DELETE FROM books WHERE id=?', [id], function(tx, rs) {
+            
+        }, function(tx, error) {
+            alert('SELECT error: ' + error.message);
+        });
     });
-    console.log(internet);
-    return internet;
-
 }
