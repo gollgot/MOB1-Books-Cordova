@@ -7,7 +7,7 @@ function bookDetailsController($scope){
 	var buildBookDetailsPage = function(title, author, cover, favorite, read, rate, isbn, comment){
 		$("section.bookDetails .details p.title").text(title);
 		$("section.bookDetails .details p.author").text(author);
-		if(hasInternet()){
+		if(hasInternet() && cover != "Inconnu"){
 			$("section.bookDetails img.cover").attr("src", cover);
 		}
 		if(read){

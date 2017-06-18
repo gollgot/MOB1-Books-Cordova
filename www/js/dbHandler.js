@@ -262,7 +262,7 @@ function addBook(db, title, author, cover, isbn){
             0,
             0,
             isbn,
-            'A simple comment'
+            'No comment ...'
         ]);
     }, function(error) {
         alert('Transaction ERROR: ' + error.message);
