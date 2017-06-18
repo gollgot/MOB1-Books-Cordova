@@ -278,9 +278,21 @@ function addBook(db, title, author, cover, isbn){
 function deleteBook(db, id){
     db.transaction(function(tx) {
         tx.executeSql('DELETE FROM books WHERE id=?', [id], function(tx, rs) {
-            
+
         }, function(tx, error) {
             alert('SELECT error: ' + error.message);
+        });
+    });
+}
+
+/**
+* Update a specific book
+*/
+function updateBook(db, id, rate, read, favorite, comment){
+    db.transaction(function(tx) {
+        tx.executeSql('UPDATE books SET rate = ?, read = ?, favorite = ?, comment = ? WHERE id = ?', [rate, read, favorite, comment, id], function(tx, rs) {
+        }, function(tx, error) {
+            alert('Une erreur est survenue lors de la sauvegarde');
         });
     });
 }
